@@ -54,3 +54,28 @@ A Transaction is when one account attempts to send money to another account. A T
 * v, r, s
   * cryptographic pieces of data that can be used to generate the senders account address. Generated from the sender's private key. 
   * If you have the private key, you can generate v,r,s. But if you only have v,r,s you cannot generate the private key. The existence of v,r,s is how you know it is a legitimate transaction.
+* Why does transaction take so long?
+  * When transaction obj gets sent to the ethereum network it gets sent to one node on the network, not the entire network
+  * When the transaction(s) (could be more than one transaction at one time) is received by the node it creates a block (list of transactions). It then runs some validation logic on the new block. This validation logic is what takes a long time on the transaction. This validation logic is called mining
+
+
+## Mining
+Mining involves computing a hash of the data, and nonce that outputs a hash. That hash is then converted to a base 10 number and is checked if it is less than some number, if it isn't then it increments the nonce value. The ethereum network tries to keep mining at around 15 seconds. So it will adjust the base 10 converted hash number up or down depending on how much computing power there is on the ethereum network. Why? Because people are logging on/off of the network so the computing power is always in flux. 
+
+## Smart Contract
+An account on ethereum network that is controlled by code. Not a human user.
+What does this contract account consist of?
+* Balance: Amaount of ether this account owns
+* Storage: Data storage for this contract
+* Code: Raw machine code for this contract
+
+Contract account cannot be accessed across different ethereum networks. Unlike our external account created through metamask that can be accessed the same on any network. 
+
+
+## Solidity Programming Language
+`.sol` files, strongly typed language.
+
+We write `.sol` files, which are then compiled by the solidity compiler and it outputs two different things. 
+1. Byte code ready for deployment
+2. ABI (Application Binary Interface)
+   1. This ABI is used for javascript code to interface with the byte code. Because the javascript cannot talk to the ABI
